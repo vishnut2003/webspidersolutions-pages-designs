@@ -565,20 +565,24 @@
   border-left-color: var(--color-line-strong);
 }
 
+/* Centred columns: symmetric padding so the value sits mid-cell rather than
+   offset by the divider's indent. */
+.stats .stat {
+  text-align: center;
+  padding-inline: var(--space-3);
+}
+
 /* No divider where a column starts a row — it would float at the panel edge. */
 .stats__grid > .stat:nth-child(odd) {
-  padding-left: 0;
   border-left: 0;
 }
 
 @media (min-width: 1024px) {
   .stats__grid > .stat:nth-child(odd) {
-    padding-left: var(--space-5);
     border-left: 1px solid var(--color-line-strong);
   }
 
   .stats__grid > .stat:first-child {
-    padding-left: 0;
     border-left: 0;
   }
 }
