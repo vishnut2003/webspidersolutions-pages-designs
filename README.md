@@ -83,8 +83,9 @@ outlined as vector paths, so it needs no font at all. A real pairing has to stan
 - Headings — **Fraunces** (Google Fonts), a modern serif matching the guide's serif intent
 - Body / UI — **Inter** (Google Fonts)
 
-> Assumption, flagged for confirmation: this pairing is a proposal, not from the brand guide. If
-> the client has licensed fonts or a preferred pairing, swap it before the first page is built.
+Confirmed as the working pairing on 2026-09-04. It is not from the brand guide, so if the client
+supplies licensed fonts they replace it everywhere via `--font-display` / `--font-body` in
+`tokens.css`.
 
 ### Logo assets
 
@@ -92,44 +93,54 @@ Downloaded from the brand guide into [assets/img/logo/](assets/img/logo/):
 
 | File | Use |
 | --- | --- |
-| `logo-full.svg` | Primary full logo, brand colors, transparent background — the default |
-| `logo-full-white.svg` | Full logo, solid white — dark backgrounds, footers, overlays |
-| `logo-full-black.svg` | Full logo, solid black — print, single-color contexts |
-| `logo-full-accent.svg` | Full logo in Spider Green `#92c131` |
-| `logo-full.png` / `logo-full-white.png` | 1600px raster fallbacks (OG images, email, decks) |
-| `icon.svg` | Spider symbol, full-color gradient treatment |
-| `icon-black.svg` / `icon-white.svg` | Symbol, solid black / solid white |
-| `icon-accent1.svg` / `icon-accent2.svg` / `icon-accent3.svg` | Symbol in each accent color |
-| `icon-512.png` / `icon-white-512.png` / `icon-accent1-512.png` | 512×512 raster — favicons, app icons, avatars |
+| `logo-full.svg` | Primary full logo (stacked lockup: cloud symbol over wordmark), brand colors, transparent. Canvas is a padded 4:3 viewBox — the artwork fills only ~74% × 38% of it. |
+| `logo-full-trimmed.svg` | **Use this in page chrome.** Same artwork, viewBox cropped to the ink (2.53:1). Header at 48px tall → 122px wide. |
+| `logo-full-white.svg` / `logo-full-white-trimmed.svg` | Solid white — dark backgrounds, footer, overlays |
+| `logo-full-black.svg` | Solid black — print, single-color contexts |
+| `logo-full-accent.svg` | Solid Spider Green `#92c131` — shape use only; it fails contrast on Bone/white |
+| `logo-full.png` / `logo-full-white.png` | 1600×624 raster, trimmed to the artwork (OG images, email, decks). Note the PNGs are trimmed while the untrimmed SVGs are padded — don't swap one for the other in the same box. |
+| `icon.svg` | **W monogram with a green dot** — the brand's profile icon. Flat two-tone (`#5a5e64` + `#92c131`; its gradient defs are unused). This is *not* the cloud symbol from the lockup. |
+| `icon-black.svg` / `icon-white.svg` | Monogram, solid black / solid white |
+| `icon-accent1.svg` / `icon-accent2.svg` / `icon-accent3.svg` | Monogram in each accent color |
+| `icon-512.png` / `icon-white-512.png` / `icon-accent1-512.png` | 512×512 raster — app icons, avatars |
+| `../favicon.svg` | Monogram with the viewBox recentred to a square around the ink — the site favicon |
 
 Usage rules from the guide:
 
 - Clear space around the full logo: at least **R**, where R = ⅓ × the logo's smaller dimension.
 - Clear space around the symbol: at least **r**, where r = ⅓ of the unit square around the icon.
-- Prefer the full logo. Use the symbol alone only in constrained spaces — favicons, app icons,
-  profile images, and the collapsed mobile header.
+- Prefer the full logo. Use the monogram alone only in constrained spaces — favicons, app icons,
+  profile images. The mobile header keeps the full (trimmed) logo at 40px.
 
 ## Stack
 
-Plain static HTML with Tailwind CSS (CDN) and vanilla JS. No build step, no dependencies — open a
-file in a browser and it works. This keeps mockups fast to produce and trivial to share.
+Plain static HTML, hand-written CSS and vanilla JS. No framework, no build step, no dependencies —
+open a file in a browser and it works. Google Fonts (Fraunces + Inter) is the only external
+request; everything else is on disk. Confirmed with the team on 2026-09-04.
 
-> Assumption, flagged for confirmation: if the redesign is meant to go straight into Next.js (or
-> the existing production stack), say so and this repo's approach changes before any page is built.
+Design tokens live in `assets/css/tokens.css`; shared components in `assets/css/components.css`;
+each page adds its own layout stylesheet (`assets/css/home.css`). Interactions are in
+`assets/js/main.js` and the page stays fully usable without them.
 
 ## Structure
 
 ```
 /
-├── index.html          # Homepage design
-├── pages/              # One file per page design
+├── index.html              # Homepage design
+├── pages/                  # One file per further page design (created as pages are built)
 ├── assets/
-│   ├── css/            # Shared styles / design tokens
-│   ├── js/             # Shared interactions
+│   ├── css/
+│   │   ├── tokens.css      # Design tokens — colors, type scale, spacing, shadows, motion
+│   │   ├── base.css        # Reset, typography, utilities, reduced-motion
+│   │   ├── components.css  # Header, nav, buttons, cards, forms, footer
+│   │   └── home.css        # Homepage section layouts
+│   ├── js/
+│   │   └── main.js         # Nav, dropdowns, reveal, count-up, testimonials, form intercept
 │   └── img/
-│       └── logo/       # Brand logo and icon assets (SVG + PNG)
+│       ├── favicon.svg     # W monogram, square-cropped
+│       └── logo/           # Brand logo and icon assets (SVG + PNG)
 ├── README.md
-└── CLAUDE.md           # Working instructions for Claude Code
+└── CLAUDE.md               # Working instructions for Claude Code
 ```
 
 ## Viewing the designs
@@ -137,8 +148,6 @@ file in a browser and it works. This keeps mockups fast to produce and trivial t
 Open `index.html` directly in a browser, or serve the folder:
 
 ```powershell
-npx serve .
-# or
 python -m http.server 8000
 ```
 
@@ -153,9 +162,29 @@ python -m http.server 8000
 
 | Page | Status |
 | --- | --- |
-| Home | Not started |
+| Home | Draft complete — awaiting internal review, then client review |
 | Services (template) | Not started |
 | Industry (template) | Not started |
 | About / Careers / Portfolio | Not started |
 | Blog listing + article | Not started |
 | Contact | Not started |
+
+### Needs client confirmation
+
+Items in the homepage mockup that are placeholders or that the client must verify before
+production:
+
+- **Partner and award logos** — shown as typographic wordmarks (Google Cloud, Meta Business,
+  Google Premier, Shopify, TikTok; Clutch, BBB, Expertise, Local Excellence Award). Official badge
+  artwork and permission to use it come from the client.
+- **Testimonials** — quotes are verbatim from the live site (one typo corrected). The two authors,
+  "Edward Kennedy" and "Olivia Hayes", are both titled "Director, Client Experience" and read like
+  template placeholders. Confirm real names, titles and companies, or replace.
+- **Third case study** — "Developing Leadership Qualities" has no metric on the live site; its
+  tags (Brand, Content) are placeholders.
+- **Hero dashboard chart** — the curve is illustrative; the figures on it (+120%, 4–6× ROAS,
+  7.8M leads) are the client's own published numbers.
+- **Service sub-links in the mega menu** — taken from the live navigation where known; a few
+  labels (e.g. "App Install Campaigns") are reasonable stand-ins for items the live menu names
+  differently.
+- **Fonts** — Fraunces + Inter stand in for the brand guide's non-licensable display face.

@@ -18,14 +18,23 @@ Consequences of that:
 
 ## Stack and conventions
 
-- Plain HTML5, Tailwind CSS via CDN, vanilla JS. No build step — every file must render correctly
-  when opened directly from disk.
-- Shared design tokens (colors, fonts, spacing scale) live in `assets/css/tokens.css` and are
-  consumed as CSS custom properties. Define a value once there; never hardcode a hex twice. If
-  that file does not exist yet, create it from the brand palette below as the first step of the
-  first page.
-- Shared CSS in `assets/css/`, shared JS in `assets/js/`, images in `assets/img/`, brand logo and
-  icon files in `assets/img/logo/`.
+- Plain HTML5, hand-written CSS, vanilla JS. No CSS framework, no build step, no package
+  manager — every file must render correctly when opened directly from disk. Google Fonts is the
+  only external request and every font has a real fallback stack.
+- CSS is split by responsibility, loaded in this order on every page:
+  - `assets/css/tokens.css` — every design value as a custom property. Define a value once here;
+    never hardcode a hex, size, or shadow twice.
+  - `assets/css/base.css` — reset, typographic defaults, utilities (`.container`, `.section`,
+    `.eyebrow`, `.reveal`, `.visually-hidden`, skip link), reduced-motion rules.
+  - `assets/css/components.css` — header, navigation, dropdowns, mobile nav, buttons, cards, tags,
+    forms, avatars, footer. Shared by every page.
+  - `assets/css/<page>.css` — that page's section layouts only (`home.css` for the homepage).
+- `assets/js/main.js` holds all interactions and is shared by every page. Dependency-free; every
+  behaviour must degrade to a usable page without it.
+- Class naming is BEM without prefixes (`.hero`, `.hero__title`, `.btn--primary`), state classes
+  are `.is-open` / `.is-visible` / `.is-scrolled`. Inline styles are allowed only to pass per-item
+  custom properties (`style="--i: 2"`, `style="--art: …"`).
+- Images in `assets/img/`, brand logo and icon files in `assets/img/logo/`.
 - One page per file: `index.html` at root, everything else under `pages/` as
   `pages/<page-name>.html` (kebab-case, e.g. `pages/seo-services.html`).
 - Relative paths only, so files work from disk and from any served subdirectory.
@@ -59,9 +68,14 @@ Rules that are easy to get wrong, so follow them literally:
 - **Respect the ratios.** Roughly 50% Bone, 20% Slate, 30% split across the accents. A page that
   is mostly green is off-brand.
 - **Logo files come from `assets/img/logo/`.** Never redraw the logo in CSS/SVG, never recolor it
-  outside the provided variants, never stretch it. `logo-full.svg` on light backgrounds,
-  `logo-full-white.svg` on dark. Use `icon-*.svg` alone only for favicons, app icons, avatars, and
-  the collapsed mobile header.
+  outside the provided variants, never stretch it. In page chrome use the `*-trimmed.svg` files
+  (`logo-full-trimmed.svg` on light, `logo-full-white-trimmed.svg` on dark): they are the same
+  artwork with the canvas cropped to the ink (2.53:1), so a 48px-tall header logo is 122px wide.
+  The un-trimmed files carry ~60% padding and are for contexts that need it. Always give the
+  `<img>` explicit `width` and `height`.
+- **`icon.svg` is a W monogram, not the lockup's cloud symbol.** It is the brand's profile icon:
+  use it for the favicon, app icons and avatars only. Never place it where the reader would expect
+  the full logo — the collapsed mobile header uses the trimmed full logo at 40px.
 - **Clear space:** ⅓ of the smaller dimension around the full logo; ⅓ of the unit square around
   the symbol. Nothing crowds it.
 - **Type:** headings in Fraunces, body/UI in Inter, both from Google Fonts, with real fallback
@@ -98,7 +112,13 @@ Rules that are easy to get wrong, so follow them literally:
 ## Checking work
 
 ```powershell
-npx serve .        # then open http://localhost:3000
+python -m http.server 8000     # then open http://localhost:8000
 ```
 
+Opening `index.html` straight from disk must also work (fonts fall back offline).
+
 There are no tests and no linter. Verification is: open the page, resize it, click through it.
+Check 375, 768, 1024 and 1440 widths; open every dropdown and the mobile menu with both mouse and
+keyboard; tab through the page once. Headless Edge (`msedge --headless=new --screenshot=…`)
+works for captures but clamps its window to ~481px wide — frame the page in an `<iframe>` of the
+target width to see a true mobile render.
