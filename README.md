@@ -174,9 +174,11 @@ python -m http.server 8000
 Items in the homepage mockup that are placeholders or that the client must verify before
 production:
 
-- **Partner and award logos** — shown as typographic wordmarks (Google Cloud, Meta Business,
-  Google Premier, Shopify, TikTok; Clutch, BBB, Expertise, Local Excellence Award). Official badge
-  artwork and permission to use it come from the client.
+- **Partner logos** — official artwork supplied by the client in `assets/img/brands-logos/`
+  (Google Cloud, Meta Business, Google, Shopify, TikTok). Files are ~30px tall, so they will look
+  soft on high-DPI screens; request 2× versions (or SVG) before production.
+- **Award badges** — still typographic (Clutch, BBB, Expertise, Local Excellence Award). Official
+  badge artwork and permission to use it come from the client.
 - **Testimonials** — quotes are verbatim from the live site (one typo corrected). The two authors,
   "Edward Kennedy" and "Olivia Hayes", are both titled "Director, Client Experience" and read like
   template placeholders. Confirm real names, titles and companies, or replace.

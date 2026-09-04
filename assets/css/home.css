@@ -183,46 +183,71 @@
   margin-top: var(--space-5);
 }
 
-/* Social proof: avatars + stars + one line */
+/* Proof strip: three figures over quiet labels, split by hairlines */
 .hero__proof {
   display: flex;
-  align-items: center;
-  gap: var(--space-4);
+  flex-wrap: wrap;
   margin-top: var(--space-6);
 }
 
-.hero__proof .avatar {
-  width: 40px;
-  height: 40px;
-  font-size: var(--text-xs);
+.hero__proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-right: var(--space-5);
+  margin-right: var(--space-5);
+  border-right: 1px solid var(--color-line-strong);
 }
 
-.hero__proof-text {
-  display: grid;
-  gap: 0.15rem;
+.hero__proof-item:last-child {
+  padding-right: 0;
+  margin-right: 0;
+  border-right: 0;
+}
+
+/* Fixed value-row height so all three labels sit on one line. */
+.hero__proof dd {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  height: 1.75rem;
+}
+
+.hero__proof dt {
+  font-size: var(--text-xs);
+  line-height: 1;
+  color: var(--color-slate);
+}
+
+.hero__proof-value {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Not a number — stays in the display serif. */
+.hero__proof-value--text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--tracking-heading);
 }
 
 .hero__stars {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
+  align-self: center;
 }
 
 .hero__stars svg {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   fill: var(--color-accent);
-}
-
-.hero__stars strong {
-  margin-left: 0.4rem;
-  font-size: var(--text-small);
-  font-weight: 600;
-}
-
-.hero__proof-line {
-  font-size: var(--text-xs);
-  color: var(--color-slate);
 }
 
 /* Hero image — square PNG on a grounded stage with floating stat cards */
@@ -294,10 +319,12 @@
 }
 
 .hero__card-value {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: var(--tracking-display);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
 }
 
 .hero__card-label {
@@ -371,7 +398,12 @@
 
 @media (max-width: 639px) {
   .hero__proof {
-    align-items: flex-start;
+    row-gap: var(--space-4);
+  }
+
+  .hero__proof-item {
+    padding-right: var(--space-4);
+    margin-right: var(--space-4);
   }
 
   .hero__card--a {
@@ -382,15 +414,58 @@
 /* --- Partner strip ------------------------------------------------------------ */
 
 .partners {
+  background: var(--color-bg);
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
   padding-block: var(--space-6);
 }
 
+/* Label column takes only the width its text needs; logos fill the rest. */
 .partners__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-5);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Two-line Fraunces label with a green rule — rhymes with the hero's
+   "generates real revenue" roman/italic pairing. */
+.partners__label {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.partners__rule {
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.partners__title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.partners__title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .partners__inner {
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* Hairline between the label and the moving logos. */
+  .partners__label {
+    padding-right: var(--space-6);
+    border-right: 1px solid var(--color-line);
+  }
 }
 
 /* min-width: 0 stops the max-content track from widening the page. */
@@ -403,48 +478,100 @@
 
 .marquee__track {
   display: flex;
+  align-items: center;
   width: max-content;
   animation: marquee 32s linear infinite;
 }
 
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
-}
-
+/* Equal-width cells so the gaps read evenly despite the logos' very
+   different aspect ratios (Meta is 142px wide, Google only 73px).
+   Equal widths also keep the duplicated set at exactly 50% for the loop. */
 .marquee__item {
-  padding-inline: var(--space-7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 158px;
+  height: 48px;
+  padding-inline: var(--space-2);
 }
 
+/* Three identical sets; shifting by exactly one third scrolls one full set,
+   leaving two sets to cover the strip so the reset is invisible. */
 @keyframes marquee {
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-33.3333%); }
 }
 
-.wordmark {
-  display: grid;
-  gap: 0.1rem;
-  white-space: nowrap;
-}
-
-.wordmark strong {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--color-slate);
-}
-
-.wordmark span {
-  font-size: var(--text-eyebrow);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-slate-soft);
+/* Supplied partner artwork: already monochrome slate on transparent, so it
+   needs no dimming. Contained rather than stretched, so every mark keeps its
+   own ratio while sharing one optical size. */
+.partner-logo {
+  max-height: 30px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 /* --- Stats band ----------------------------------------------------------------- */
 
+/* Supplied artwork anchored to the bottom. The veil only softens the top
+   edge into the page — the frosted panel below carries text legibility. */
+.stats {
+  background-image:
+    linear-gradient(to bottom, var(--color-bg) 0%, rgba(242, 243, 239, 0.35) 22%, rgba(242, 243, 239, 0.12) 100%),
+    url("../img/home/metrics-bg-image.png");
+  background-position: center, bottom center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+}
+
+/* Frosted panel so the figures stay legible over the photograph. */
 .stats__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-6) var(--space-5);
+  padding: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  background: rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  backdrop-filter: blur(18px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ink, not Slate: safer over a photograph than the lighter secondary tone. */
+.stats .stat__label {
+  color: var(--color-ink);
+}
+
+/* One line per label — but only where the column is wide enough to hold it. */
+@media (min-width: 640px) {
+  .stats .stat__label {
+    white-space: nowrap;
+  }
+}
+
+.stats .stat {
+  border-left-color: var(--color-line-strong);
+}
+
+/* No divider where a column starts a row — it would float at the panel edge. */
+.stats__grid > .stat:nth-child(odd) {
+  padding-left: 0;
+  border-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .stats__grid > .stat:nth-child(odd) {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--color-line-strong);
+  }
+
+  .stats__grid > .stat:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
 }
 
 .stat {
@@ -452,13 +579,15 @@
   border-left: 1px solid var(--color-line-strong);
 }
 
+/* Metrics read as data, not editorial: tight semibold Inter rather than the
+   display serif, whose thin numerals get spindly at this size. */
 .stat__value {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-stat);
-  font-weight: 300;
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: var(--tracking-display);
+  letter-spacing: -0.035em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -467,7 +596,6 @@
   margin-top: var(--space-3);
   font-size: var(--text-small);
   color: var(--color-slate);
-  max-width: 20ch;
 }
 
 @media (min-width: 1024px) {
@@ -748,11 +876,12 @@
 
 .case-card__metric-value {
   display: block;
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 1.6rem + 1.7vw, 3rem);
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: var(--tracking-display);
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-card__metric-label {

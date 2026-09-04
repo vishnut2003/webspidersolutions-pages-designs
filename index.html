@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo/icon-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -244,25 +244,29 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
-          <div class="hero__proof reveal" style="--i: 4">
-            <span class="avatar-stack" aria-hidden="true">
-              <span class="avatar avatar--tint">MG</span>
-              <span class="avatar">AL</span>
-              <span class="avatar avatar--tint">DL</span>
-              <span class="avatar">RK</span>
-            </span>
-            <div class="hero__proof-text">
-              <span class="hero__stars" role="img" aria-label="Rated 5.0 on Clutch">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-                <strong>5.0</strong>
-              </span>
-              <span class="hero__proof-line">on Clutch · Trusted by 1,000+ businesses · Google &amp; Meta partner</span>
+          <dl class="hero__proof reveal" style="--i: 4">
+            <div class="hero__proof-item">
+              <dd>
+                <span class="hero__proof-value">5.0</span>
+                <span class="hero__stars" role="img" aria-label="Five out of five stars">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                </span>
+              </dd>
+              <dt>Clutch rating</dt>
             </div>
-          </div>
+            <div class="hero__proof-item">
+              <dd><span class="hero__proof-value">1,000+</span></dd>
+              <dt>Businesses served</dt>
+            </div>
+            <div class="hero__proof-item">
+              <dd><span class="hero__proof-value hero__proof-value--text">Google &amp; Meta</span></dd>
+              <dt>Certified partner</dt>
+            </div>
+          </dl>
         </div>
 
         <div class="hero__visual reveal" style="--i: 2">
@@ -285,19 +289,27 @@
     <!-- ======================================================= Partners -->
     <section class="partners" aria-label="Certified partners">
       <div class="container partners__inner">
-        <p class="eyebrow">Certified partners</p>
+        <p class="partners__label">
+          <span class="partners__rule" aria-hidden="true"></span>
+          <span class="partners__title">Certified<br><em>partners</em></span>
+        </p>
         <div class="marquee">
           <div class="marquee__track">
-            <div class="marquee__item"><p class="wordmark"><strong>Google Cloud</strong><span>Partner</span></p></div>
-            <div class="marquee__item"><p class="wordmark"><strong>Meta Business</strong><span>Partner</span></p></div>
-            <div class="marquee__item"><p class="wordmark"><strong>Google</strong><span>Premier Partner</span></p></div>
-            <div class="marquee__item"><p class="wordmark"><strong>Shopify</strong><span>Partner</span></p></div>
-            <div class="marquee__item"><p class="wordmark"><strong>TikTok</strong><span>Marketing Partner</span></p></div>
-            <div class="marquee__item" aria-hidden="true"><p class="wordmark"><strong>Google Cloud</strong><span>Partner</span></p></div>
-            <div class="marquee__item" aria-hidden="true"><p class="wordmark"><strong>Meta Business</strong><span>Partner</span></p></div>
-            <div class="marquee__item" aria-hidden="true"><p class="wordmark"><strong>Google</strong><span>Premier Partner</span></p></div>
-            <div class="marquee__item" aria-hidden="true"><p class="wordmark"><strong>Shopify</strong><span>Partner</span></p></div>
-            <div class="marquee__item" aria-hidden="true"><p class="wordmark"><strong>TikTok</strong><span>Marketing Partner</span></p></div>
+            <div class="marquee__item"><img class="partner-logo" src="assets/img/brands-logos/google-cloud-partner.png" alt="Google Cloud Partner" width="119" height="29" loading="lazy" decoding="async"></div>
+            <div class="marquee__item"><img class="partner-logo" src="assets/img/brands-logos/meta-business-partner.png" alt="Meta Business Partners" width="142" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item"><img class="partner-logo" src="assets/img/brands-logos/google-partner.png" alt="Google Partner" width="73" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item"><img class="partner-logo" src="assets/img/brands-logos/shopify-partner.png" alt="Shopify Partner" width="79" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item"><img class="partner-logo" src="assets/img/brands-logos/tiktok-partner.png" alt="TikTok Marketing Partner" width="78" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/google-cloud-partner.png" alt="" width="119" height="29" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/meta-business-partner.png" alt="" width="142" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/google-partner.png" alt="" width="73" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/shopify-partner.png" alt="" width="79" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/tiktok-partner.png" alt="" width="78" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/google-cloud-partner.png" alt="" width="119" height="29" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/meta-business-partner.png" alt="" width="142" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/google-partner.png" alt="" width="73" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/shopify-partner.png" alt="" width="79" height="30" loading="lazy" decoding="async"></div>
+            <div class="marquee__item" aria-hidden="true"><img class="partner-logo" src="assets/img/brands-logos/tiktok-partner.png" alt="" width="78" height="30" loading="lazy" decoding="async"></div>
           </div>
         </div>
       </div>
@@ -313,7 +325,7 @@
           </li>
           <li class="stat reveal" style="--i: 1">
             <span class="stat__value" data-count="100" data-suffix="%">100%</span>
-            <span class="stat__label">Client retention, three years running</span>
+            <span class="stat__label">3-year client retention</span>
           </li>
           <li class="stat reveal" style="--i: 2">
             <span class="stat__value" data-count="1000" data-suffix="+">1,000+</span>
@@ -321,7 +333,7 @@
           </li>
           <li class="stat reveal" style="--i: 3">
             <span class="stat__value" data-count="50" data-suffix="+">50+</span>
-            <span class="stat__label">SEO, paid and content specialists</span>
+            <span class="stat__label">In-house specialists</span>
           </li>
         </ul>
       </div>
