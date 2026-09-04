@@ -520,13 +520,13 @@
 
 /* --- Stats band ----------------------------------------------------------------- */
 
-/* Supplied artwork anchored to the bottom. The veil only softens the top
-   edge into the page — the frosted panel below carries text legibility. */
+/* Supplied artwork anchored to the top. The veil starts opaque at the
+   bottom edge and thins upward — the frosted panel carries legibility. */
 .stats {
   background-image:
-    linear-gradient(to bottom, var(--color-bg) 0%, rgba(242, 243, 239, 0.35) 22%, rgba(242, 243, 239, 0.12) 100%),
-    url("../img/home/metrics-bg-image.png");
-  background-position: center, bottom center;
+    linear-gradient(to top, var(--color-bg) 0%, rgba(242, 243, 239, 0.35) 22%, rgba(242, 243, 239, 0.12) 100%),
+    url("../img/home/metrics/metrics-bg-image.png");
+  background-position: center, top center;
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
 }
@@ -626,15 +626,38 @@
 }
 
 .service-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: var(--space-6) var(--space-5) var(--space-5);
+  padding: var(--space-5);
+}
+
+/* Corner glow on hover, in the card's own --tile hue rather than green. */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: -45%;
+  right: -35%;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tile, var(--color-accent-tint)), transparent 72%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.service-card:hover::before {
+  opacity: 1;
 }
 
 .service-card__top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: var(--space-3);
 }
 
 .service-card__index {
@@ -642,28 +665,68 @@
   font-size: 1.125rem;
   color: var(--color-slate-soft);
   font-variant-numeric: tabular-nums;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.service-card:hover .service-card__index {
+  color: var(--color-slate);
+}
+
+/* Supplied 3D illustrations. They lead the card, so they get a real tile
+   to sit on and the index numeral steps back to the corner. */
+.service-card__icon {
+  order: -1;
+  width: 96px;
+  height: 96px;
+  padding: 8px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  /* --tile is set per card in the markup, keyed to that illustration's
+     dominant hue; falls back to Bone if one is ever missing. */
+  background: var(--tile, var(--color-bg));
+  transition:
+    transform var(--dur) var(--ease-out),
+    filter var(--dur) var(--ease-out);
+}
+
+.service-card:hover .service-card__icon {
+  transform: scale(1.05);
+  filter: saturate(1.15);
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .service-card__title {
   margin-top: var(--space-5);
-  font-size: 1.25rem;
+  font-size: 1.1875rem;
 }
 
+/* padding-bottom guarantees clearance above the rule even on the tallest
+   cards, where margin-top:auto on the stat has no slack left to give. */
 .service-card__text {
   margin-top: var(--space-2);
+  padding-bottom: var(--space-5);
   font-size: var(--text-small);
   color: var(--color-slate);
   line-height: 1.55;
 }
 
+/* auto pushes the stat and link to the card's floor, so every card's
+   rule and CTA line up across the row regardless of copy length. */
+/* auto pushes the stat and link to the card's floor, so every card's
+   rule and CTA line up across the row regardless of copy length.
+   Sized to hold the longest claim on one line in a quarter-column. */
 .service-card__stat {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-2);
-  margin-top: var(--space-5);
+  gap: 0.4rem;
+  margin-top: auto;
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-line);
-  font-size: var(--text-xs);
+  font-size: 0.75rem;
+  letter-spacing: -0.005em;
   font-weight: 500;
   color: var(--color-ink);
   line-height: 1.45;
@@ -680,8 +743,21 @@
 }
 
 .service-card__link {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   font-size: var(--text-small);
+}
+
+/* Stretch the CTA over the whole card so the entire tile is clickable. */
+.service-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.service-card:hover .service-card__link span {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }
 
 @media (min-width: 640px) {

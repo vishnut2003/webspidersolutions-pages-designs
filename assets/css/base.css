@@ -172,29 +172,41 @@ p {
   padding-block: calc(var(--section-y) * 0.6);
 }
 
+/* Opens on a hairline, like a chapter rule, so the heading has structure
+   instead of floating in space. */
 .section__head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-6);
-  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+  margin-bottom: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
 }
 
 .section__head > div {
   max-width: 46rem;
 }
 
-.section__head .link-arrow {
+.section__head .link-arrow,
+.section__head .btn {
   flex-shrink: 0;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.4em;
 }
 
 .section__title {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+/* Accent phrase in the display italic — the same device as the hero's
+   "generates real revenue". */
+.section__title em {
+  font-style: italic;
+  font-weight: 300;
 }
 
 .section__lead {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 @media (max-width: 767px) {
@@ -204,43 +216,45 @@ p {
     gap: var(--space-4);
   }
 
-  .section__head .link-arrow {
+  .section__head .link-arrow,
+  .section__head .btn {
     margin-bottom: 0;
   }
 }
 
 /* --- Eyebrow --------------------------------------------------------------- */
 
+/* Chapter marker: a numeral, a green rule, then the label in display
+   italic — deliberately not the usual dot-plus-tracked-caps eyebrow. */
 .eyebrow {
   display: inline-flex;
-  align-items: flex-start;
-  gap: var(--space-2);
-  line-height: 1.5;
-  font-size: var(--text-eyebrow);
-  font-weight: 600;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-slate);
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  color: var(--color-ink);
 }
 
 .eyebrow::before {
   content: "";
-  width: 6px;
-  height: 6px;
-  margin-top: 0.45em;
-  border-radius: 50%;
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--color-accent);
   flex-shrink: 0;
 }
 
-.eyebrow--pulse::before {
-  animation: pulse 2.4s var(--ease-out) infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--color-accent-glow); }
-  70% { box-shadow: 0 0 0 10px rgba(146, 193, 49, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(146, 193, 49, 0); }
+/* Sits ahead of the rule; roman and tabular against the italic label. */
+.eyebrow__num {
+  order: -1;
+  font-style: normal;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--color-slate-soft);
 }
 
 /* --- Accessibility helpers ------------------------------------------------ */
