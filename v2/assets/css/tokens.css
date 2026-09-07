@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Design tokens — the single source of truth for every visual value.
+   Brand values come from README.md › Brand reference (Brandmark guide).
+   Change a value here; never inline a hex twice.
+   ========================================================================== */
+
+:root {
+  /* --- Brand palette --------------------------------------------------- */
+  --color-bg: #f2f3ef;        /* Bone         — page background, ~50%         */
+  --color-surface: #ffffff;   /* Surface      — cards on Bone (derived)       */
+  --color-ink: #2f3237;       /* Ink          — body text, text on green      */
+  --color-slate: #5a5e64;     /* Slate        — secondary text, ~20%          */
+  --color-accent: #92c131;    /* Spider Green — primary accent, shapes only   */
+  --color-accent-2: #7fa042;  /* Moss         — supporting tone               */
+  --color-accent-3: #6d7f53;  /* Olive        — supporting tone               */
+
+  /* --- Derived tints and lines ----------------------------------------- */
+  --color-accent-tint: rgba(146, 193, 49, 0.12);
+  --color-accent-tint-strong: rgba(146, 193, 49, 0.24);
+  --color-accent-glow: rgba(146, 193, 49, 0.28);
+  --color-line: rgba(90, 94, 100, 0.16);
+  --color-line-strong: rgba(90, 94, 100, 0.3);
+  --color-slate-soft: rgba(90, 94, 100, 0.35);
+  --color-hover-wash: rgba(90, 94, 100, 0.08);
+  --color-on-dark: #f2f3ef;
+  --color-on-dark-muted: rgba(242, 243, 239, 0.72);
+  --color-line-on-dark: rgba(242, 243, 239, 0.14);
+  --color-surface-on-dark: rgba(242, 243, 239, 0.05); /* raised tiles on Ink */
+  --color-header-bg: rgba(242, 243, 239, 0.55);   /* at top: blends into Bone */
+  --color-header-bg-solid: rgba(255, 255, 255, 0.86); /* scrolled: white frosted */
+  --color-backdrop: rgba(47, 50, 55, 0.4);
+
+  /* --- Typography ------------------------------------------------------- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.5rem);
+  --text-h2: clamp(1.75rem, 1.25rem + 1.9vw, 3rem);
+  --text-h3: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem);
+  --text-h4: 1.25rem;
+  /* Sized for the widest metric ("₹350Cr+") to fit a quarter of the stats
+     panel; semibold sans runs much wider than the display serif did. */
+  --text-stat: clamp(1.5rem, 1rem + 1.8vw, 2.75rem);
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-body: 1rem;
+  --text-ui: 0.9375rem;
+  --text-small: 0.875rem;
+  --text-xs: 0.8125rem;
+  --text-eyebrow: 0.75rem;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.08;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-lead: 1.55;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.015em;
+  --tracking-eyebrow: 0.14em;
+
+  /* --- Spacing ---------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --section-y: clamp(2.25rem, 1.5rem + 2.6vw, 4rem);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --container: 1200px;
+  --container-wide: 1360px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 80px;
+
+  /* --- Shape ------------------------------------------------------------ */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* --- Elevation: soft, layered, low opacity ----------------------------- */
+  --shadow-sm: 0 1px 2px rgba(47, 50, 55, 0.05);
+  --shadow-md: 0 1px 2px rgba(47, 50, 55, 0.04), 0 8px 24px -8px rgba(47, 50, 55, 0.12);
+  --shadow-lg: 0 2px 4px rgba(47, 50, 55, 0.04), 0 24px 48px -16px rgba(47, 50, 55, 0.18);
+  --shadow-ink: 0 1px 2px rgba(47, 50, 55, 0.12), 0 10px 24px -10px rgba(47, 50, 55, 0.45);
+  --shadow-accent: 0 1px 2px rgba(47, 50, 55, 0.08), 0 14px 28px -10px rgba(146, 193, 49, 0.8);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 640ms;
+
+  /* --- Layers ----------------------------------------------------------- */
+  --z-header: 100;
+  --z-dropdown: 110;
+  --z-overlay: 200;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 64px;
+  }
+}
