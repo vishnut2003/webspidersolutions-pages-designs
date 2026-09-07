@@ -124,12 +124,6 @@
   white-space: nowrap;
 }
 
-.hero__dateline-coords {
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-}
-
 /* Title scales with viewport HEIGHT as well as width so header + hero
    fit one fold on short laptops (1366×650) and on 1920×1080 alike. */
 /* Wide enough for "that drives revenue." on one line, so the title
