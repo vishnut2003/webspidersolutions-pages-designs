@@ -717,13 +717,29 @@
         </div>
 
         <ul class="work__grid">
+          <!-- Spotlight: panel and body side by side from tablet up. -->
           <li class="card card--hover case-card case-card--featured reveal">
-            <a href="#" aria-label="Mangalmay case study — +120% AI-driven traffic">
-              <div class="case-card__art" style="--art: radial-gradient(120% 100% at 0% 100%, rgba(146,193,49,0.35), rgba(242,243,239,0.6) 55%, #ffffff 100%)">
+            <a class="case-card__link" href="#" aria-label="Mangalmay case study — +120% AI-driven traffic in nine months">
+              <div class="case-card__panel case-card__panel--ink">
+                <div class="case-card__panel-head">
+                  <span class="case-card__pill">Education · 9 months</span>
+                  <span class="avatar case-card__client" aria-hidden="true">M</span>
+                </div>
                 <div class="case-card__metric">
                   <span class="case-card__metric-value">+120%</span>
                   <span class="case-card__metric-label">AI-driven traffic</span>
                 </div>
+                <svg class="case-card__chart" viewBox="0 0 320 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                  <path d="M0 100C40 96 60 90 90 78S140 52 180 44s60-12 120-28V120H0z" fill="url(#case-fill)"/>
+                  <path d="M0 100C40 96 60 90 90 78S140 52 180 44s60-12 120-28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="case-fill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="currentColor" stop-opacity="0.32"/>
+                      <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span class="case-card__dot" aria-hidden="true"></span>
               </div>
               <div class="case-card__body">
                 <ul class="tags" aria-label="Services">
@@ -734,16 +750,35 @@
                   <li class="tag">SEO</li>
                 </ul>
                 <h3 class="case-card__title">Mangalmay</h3>
+                <p class="case-card__summary">Answer-engine optimisation for a Greater Noida education group, so course searches in Google AI Overviews and ChatGPT resolve to Mangalmay's own pages.</p>
+                <dl class="case-card__results">
+                  <div><dt>Admission enquiries</dt><dd>3.2×</dd></div>
+                  <div><dt>Course terms at #1</dt><dd>40+</dd></div>
+                  <div><dt>AI citations, monthly</dt><dd>1,800</dd></div>
+                </dl>
                 <span class="link-arrow"><span>Read case study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </div>
             </a>
           </li>
+
           <li class="card card--hover case-card reveal" style="--i: 1">
-            <a href="#" aria-label="AI Law GPT case study — +40% growth">
-              <div class="case-card__art" style="--art: linear-gradient(150deg, rgba(109,127,83,0.28), rgba(242,243,239,0.7) 60%, #ffffff)">
+            <a class="case-card__link" href="#" aria-label="AI Law GPT case study — +40% growth in six months">
+              <div class="case-card__panel" style="--art: var(--color-accent-tint)">
+                <div class="case-card__panel-head">
+                  <span class="case-card__pill">Legal tech · 6 months</span>
+                  <span class="avatar case-card__client" aria-hidden="true">A</span>
+                </div>
                 <div class="case-card__metric">
                   <span class="case-card__metric-value">+40%</span>
-                  <span class="case-card__metric-label">Growth</span>
+                  <span class="case-card__metric-label">Month-on-month growth</span>
+                </div>
+                <div class="case-card__bars" aria-hidden="true">
+                  <span style="--h: 0.3; --i: 0"></span>
+                  <span style="--h: 0.42; --i: 1"></span>
+                  <span style="--h: 0.5; --i: 2"></span>
+                  <span style="--h: 0.62; --i: 3"></span>
+                  <span style="--h: 0.8; --i: 4"></span>
+                  <span style="--h: 1; --i: 5"></span>
                 </div>
               </div>
               <div class="case-card__body">
@@ -753,19 +788,49 @@
                   <li class="tag">Web Development</li>
                 </ul>
                 <h3 class="case-card__title">AI Law GPT</h3>
+                <p class="case-card__summary">Product site, onboarding flow and app build for a legal-research assistant, designed to turn free trials into paid seats.</p>
+                <dl class="case-card__results">
+                  <div><dt>Trial to paid</dt><dd>2.1×</dd></div>
+                  <div><dt>Bounce rate</dt><dd>−38%</dd></div>
+                  <div><dt>Time to launch</dt><dd>11 wks</dd></div>
+                </dl>
                 <span class="link-arrow"><span>Read case study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </div>
             </a>
           </li>
+
           <li class="card card--hover case-card reveal" style="--i: 2">
-            <a href="#" aria-label="Developing Leadership Qualities case study">
-              <div class="case-card__art" style="--art: linear-gradient(160deg, rgba(127,160,66,0.3), rgba(242,243,239,0.7) 55%, #ffffff)"></div>
+            <a class="case-card__link" href="#" aria-label="Developing Leadership Qualities case study — +85% organic reach in four months">
+              <div class="case-card__panel" style="--art: rgba(109, 127, 83, 0.14)">
+                <div class="case-card__panel-head">
+                  <span class="case-card__pill">Coaching · 4 months</span>
+                  <span class="avatar case-card__client" aria-hidden="true">D</span>
+                </div>
+                <div class="case-card__metric">
+                  <span class="case-card__metric-value">+85%</span>
+                  <span class="case-card__metric-label">Organic reach</span>
+                </div>
+                <div class="case-card__bars" aria-hidden="true">
+                  <span style="--h: 0.25; --i: 0"></span>
+                  <span style="--h: 0.35; --i: 1"></span>
+                  <span style="--h: 0.55; --i: 2"></span>
+                  <span style="--h: 0.5; --i: 3"></span>
+                  <span style="--h: 0.75; --i: 4"></span>
+                  <span style="--h: 1; --i: 5"></span>
+                </div>
+              </div>
               <div class="case-card__body">
                 <ul class="tags" aria-label="Services">
                   <li class="tag">Brand</li>
                   <li class="tag">Content</li>
                 </ul>
                 <h3 class="case-card__title">Developing Leadership Qualities</h3>
+                <p class="case-card__summary">Brand identity and a content engine for a leadership-coaching practice, from positioning through to a weekly publishing rhythm.</p>
+                <dl class="case-card__results">
+                  <div><dt>Newsletter list</dt><dd>3×</dd></div>
+                  <div><dt>Articles shipped</dt><dd>52</dd></div>
+                  <div><dt>Avg. read time</dt><dd>4:10</dd></div>
+                </dl>
                 <span class="link-arrow"><span>Read case study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </div>
             </a>
