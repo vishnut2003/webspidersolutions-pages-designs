@@ -132,10 +132,20 @@
 
 /* Title scales with viewport HEIGHT as well as width so header + hero
    fit one fold on short laptops (1366×650) and on 1920×1080 alike. */
+/* Wide enough for "that drives revenue." on one line, so the title
+   balances into two lines; the grid column still bounds it. */
 .hero__title {
   margin-top: clamp(0.5rem, 1.2vh, 0.75rem);
-  max-width: 14ch;
+  max-width: 22ch;
   font-size: clamp(2.25rem, min(1.1rem + 2.8vw, 6.6vh), 3.75rem);
+}
+
+/* "Digital marketing" stays on one line from tablet up; on phones it
+   may wrap rather than overflow the column. */
+@media (min-width: 768px) {
+  .hero__keep {
+    white-space: nowrap;
+  }
 }
 
 .hero__title em {
