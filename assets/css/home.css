@@ -2472,51 +2472,134 @@
 
 /* --- Final CTA ------------------------------------------------------------------------------ */
 
+/* Split card: an Ink pitch panel beside the white form panel. */
 .cta__box {
-  position: relative;
+  display: grid;
   overflow: hidden;
-  padding: clamp(2rem, 1.5rem + 3vw, 4.5rem);
-  background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
 }
 
-.cta__box::before {
+/* --- Pitch panel ------------------------------------------------------- */
+
+.cta__content {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+.cta__content::before {
   content: "";
   position: absolute;
-  top: -200px;
-  right: -120px;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, var(--color-accent-tint-strong), transparent 70%);
-  pointer-events: none;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(var(--color-line-on-dark) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 0% 100%, rgba(0, 0, 0, 0.9), transparent 70%);
+  mask-image: radial-gradient(ellipse at 0% 100%, rgba(0, 0, 0, 0.9), transparent 70%);
 }
 
-.cta__grid {
+.cta__content::after {
+  content: "";
+  position: absolute;
+  top: -220px;
+  right: -160px;
+  z-index: -1;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--color-accent-glow), transparent 72%);
+  opacity: 0.7;
+}
+
+.cta__content :focus-visible {
+  outline-color: var(--color-on-dark);
+}
+
+.cta__content .eyebrow,
+.cta__content .section__title {
+  color: var(--color-on-dark);
+}
+
+.cta__content .eyebrow__num {
+  color: var(--color-on-dark-muted);
+}
+
+.cta__lead {
+  margin-top: var(--space-4);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-on-dark-muted);
+}
+
+/* What happens next: numbered green discs on a dashed rail. */
+.cta__steps {
   position: relative;
   display: grid;
-  gap: var(--space-7);
-}
-
-.cta__content .check-list {
+  gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
-.cta__content .check-list li {
-  color: var(--color-slate);
+.cta__steps::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 15px;
+  border-left: 2px dashed var(--color-line-on-dark);
+}
+
+.cta__steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.cta__step-num {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.cta__steps strong {
+  display: block;
+  padding-top: 0.3rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.cta__steps span:not(.cta__step-num) {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-on-dark-muted);
 }
 
 .cta__phone {
   margin-top: var(--space-7);
   padding-top: var(--space-5);
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--color-line-on-dark);
 }
 
 .cta__phone p {
   font-size: var(--text-small);
-  color: var(--color-slate);
+  color: var(--color-on-dark-muted);
 }
 
 .cta__phone a {
@@ -2524,6 +2607,7 @@
   margin-top: var(--space-2);
   font-family: var(--font-display);
   font-size: 1.75rem;
+  color: var(--color-on-dark);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2533,18 +2617,100 @@
   text-decoration-thickness: 1px;
 }
 
+/* --- Form panel -------------------------------------------------------- */
+
+/* Flex column so the trust strip can sit on the floor whatever height
+   the Ink panel gives the row. */
+.cta__panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+}
+
+.cta__textarea {
+  height: auto;
+  min-height: 6rem;
+  padding-block: 0.75rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.cta__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.cta__trust-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cta__trust .avatar {
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xs);
+}
+
+.cta__trust-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+}
+
+.cta__panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.cta__panel-title {
+  font-size: 1.375rem;
+}
+
+.cta__panel-time {
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+}
+
 .cta__form {
   display: grid;
   gap: var(--space-4);
 }
 
 .cta__form .btn {
+  width: 100%;
   margin-top: var(--space-2);
 }
 
 .cta__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   font-size: var(--text-xs);
+  line-height: 1.5;
   color: var(--color-slate);
+}
+
+.cta__note svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.15em;
+  color: var(--color-accent-2);
 }
 
 @media (min-width: 640px) {
@@ -2560,9 +2726,8 @@
 }
 
 @media (min-width: 1024px) {
-  .cta__grid {
+  .cta__box {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: var(--space-9);
   }
 }
 

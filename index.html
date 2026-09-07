@@ -1124,19 +1124,47 @@
     <section class="section cta" id="contact" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta__box reveal">
-          <div class="cta__grid">
-            <div class="cta__content">
-              <p class="eyebrow"><span class="eyebrow__num">07</span>Free consultation</p>
-              <h2 class="section__title" id="cta-title">Book a free consultation to boost your business.</h2>
-              <ul class="check-list">
-                <li>30-minute strategy call</li>
-                <li>In-depth audit of your site and channels</li>
-                <li>A growth roadmap you can act on</li>
-              </ul>
-              <div class="cta__phone">
-                <p>Prefer to talk? Call our growth expert</p>
-                <a href="tel:+918851071512">+91 88510 71512</a>
-              </div>
+          <!-- Ink panel: the pitch and what happens after you send the form. -->
+          <div class="cta__content">
+            <p class="eyebrow"><span class="eyebrow__num">07</span>Free consultation</p>
+            <h2 class="section__title" id="cta-title">Book a free consultation to boost your business.</h2>
+            <p class="cta__lead">Thirty minutes with a strategist, not a salesperson. You leave with an audit of your site and channels and a roadmap you can act on, whether or not you hire us.</p>
+
+            <ol class="cta__steps">
+              <li>
+                <span class="cta__step-num" aria-hidden="true">1</span>
+                <div>
+                  <strong>We reply within a day</strong>
+                  <span>with a couple of questions about your goals and current numbers.</span>
+                </div>
+              </li>
+              <li>
+                <span class="cta__step-num" aria-hidden="true">2</span>
+                <div>
+                  <strong>30-minute strategy call</strong>
+                  <span>on video or phone, at a time that suits you.</span>
+                </div>
+              </li>
+              <li>
+                <span class="cta__step-num" aria-hidden="true">3</span>
+                <div>
+                  <strong>Audit and roadmap in five working days</strong>
+                  <span>with clear priorities, budgets and expected outcomes.</span>
+                </div>
+              </li>
+            </ol>
+
+            <div class="cta__phone">
+              <p>Prefer to talk? Call our growth expert</p>
+              <a href="tel:+918851071512">+91 88510 71512</a>
+            </div>
+          </div>
+
+          <!-- Form panel -->
+          <div class="cta__panel">
+            <div class="cta__panel-head">
+              <h3 class="cta__panel-title">Tell us about the project</h3>
+              <span class="cta__panel-time">Takes about two minutes</span>
             </div>
 
             <form class="cta__form" action="#" method="post" novalidate>
@@ -1166,16 +1194,49 @@
                   <option>Web Design &amp; Development</option>
                 </select>
               </div>
+              <div class="field">
+                <label class="field__label" for="f-budget">Monthly budget</label>
+                <select class="field__input" id="f-budget" name="budget">
+                  <option value="">Choose a range</option>
+                  <option>Under ₹50,000</option>
+                  <option>₹50,000 – ₹1.5 lakh</option>
+                  <option>₹1.5 – ₹5 lakh</option>
+                  <option>₹5 lakh and above</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
               <div class="field field--full">
-                <label class="field__label" for="f-msg">Tell us about your goals <span class="muted">(optional)</span></label>
-                <input class="field__input" id="f-msg" name="message" type="text" placeholder="e.g. Double qualified leads by Q2">
+                <label class="field__label" for="f-msg">Your main goal <span class="muted">(optional)</span></label>
+                <textarea class="field__input cta__textarea" id="f-msg" name="message" rows="3" placeholder="e.g. Double qualified leads by Q2 without raising ad spend"></textarea>
               </div>
               <button class="btn btn--primary" type="submit">
                 <span>Send me a proposal</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </button>
-              <p class="cta__note">No spam, no obligation. We reply within one business day.</p>
+              <p class="cta__note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                No spam, no obligation. Your details stay with us and we reply within one business day.
+              </p>
             </form>
+
+            <!-- Trust strip, pinned to the panel floor. -->
+            <div class="cta__trust">
+              <div class="cta__trust-rating">
+                <span class="avatar-stack" aria-hidden="true">
+                  <span class="avatar avatar--tint">RS</span><span class="avatar">MK</span><span class="avatar avatar--tint">AP</span>
+                </span>
+                <span class="cta__trust-text">
+                  <span class="stars" role="img" aria-label="Five out of five stars">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  </span>
+                  <span>Rated 5.0 on Clutch · 1,000+ businesses served</span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
