@@ -25,6 +25,7 @@
   --color-on-dark: #f2f3ef;
   --color-on-dark-muted: rgba(242, 243, 239, 0.72);
   --color-line-on-dark: rgba(242, 243, 239, 0.14);
+  --color-surface-on-dark: rgba(242, 243, 239, 0.05); /* raised tiles on Ink */
   --color-header-bg: rgba(242, 243, 239, 0.55);   /* at top: blends into Bone */
   --color-header-bg-solid: rgba(255, 255, 255, 0.86); /* scrolled: white frosted */
   --color-backdrop: rgba(47, 50, 55, 0.4);

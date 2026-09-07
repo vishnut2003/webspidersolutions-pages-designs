@@ -2124,7 +2124,7 @@
   padding: var(--space-4);
   border: 1px solid var(--color-line-on-dark);
   border-radius: var(--radius);
-  background: rgba(242, 243, 239, 0.05);
+  background: var(--color-surface-on-dark);
   transition:
     border-color var(--dur) var(--ease-out),
     transform var(--dur) var(--ease-out);
