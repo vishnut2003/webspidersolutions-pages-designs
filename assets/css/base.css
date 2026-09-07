@@ -247,14 +247,13 @@ p {
   flex-shrink: 0;
 }
 
-/* Sits ahead of the rule; roman and tabular against the italic label. */
-.eyebrow__num {
+/* Sits ahead of the rule: the W monogram at the same 20px as the hero
+   dateline uses it. */
+.eyebrow__mark {
   order: -1;
-  font-style: normal;
-  font-size: 0.9375rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-  color: var(--color-slate-soft);
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 /* --- Accessibility helpers ------------------------------------------------ */

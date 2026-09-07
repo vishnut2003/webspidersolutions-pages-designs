@@ -2511,8 +2511,12 @@
   color: var(--color-on-dark);
 }
 
-.cta__content .eyebrow__num {
-  color: var(--color-on-dark-muted);
+/* The white icon file carries more canvas padding than the favicon crop;
+   drawing it at 28px inside the same 20px slot keeps the W the same size. */
+.cta__content .eyebrow__mark--on-dark {
+  width: 28px;
+  height: 28px;
+  margin: -4px;
 }
 
 .cta__lead {
