@@ -744,6 +744,20 @@
   margin-left: 0;
 }
 
+/* --- Star rating (icons only; the value is always spelled out beside it) -------------- */
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-accent);
+}
+
 /* --- Form fields ------------------------------------------------------------------------- */
 
 .field {
