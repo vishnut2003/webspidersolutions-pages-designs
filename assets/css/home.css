@@ -779,11 +779,22 @@
   gap: var(--space-7);
 }
 
-.approach__aside p {
+.approach__visual img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.approach__intro {
+  margin-bottom: var(--space-6);
+}
+
+.approach__intro p {
   margin-top: var(--space-4);
 }
 
-.approach__aside .link-arrow {
+.approach__intro .link-arrow {
   margin-top: var(--space-5);
 }
 
@@ -821,7 +832,8 @@
     align-items: start;
   }
 
-  .approach__aside {
+  /* The image holds while the intro and four steps scroll past it. */
+  .approach__visual {
     position: sticky;
     top: calc(var(--header-h) + 2rem);
   }
