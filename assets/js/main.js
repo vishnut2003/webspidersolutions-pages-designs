@@ -216,16 +216,17 @@
     dots.forEach(function (d, i) { d.addEventListener('click', function () { showQuote(i); }); });
   }
 
-  /* --- Presentational form: intercept submit ------------------------------------- */
-  var form = doc.querySelector('.cta__form');
-  if (form) {
+  /* --- Presentational forms: intercept submit ------------------------------------ */
+  /* Each form may set data-sent-label for its confirmation text. */
+  var forms = doc.querySelectorAll('.cta__form, .insights__note');
+  Array.prototype.forEach.call(forms, function (form) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       var button = form.querySelector('button[type="submit"]');
       if (!button) return;
       var labelEl = button.querySelector('span') || button;
       var label = labelEl.textContent;
-      labelEl.textContent = 'Request sent ✓';
+      labelEl.textContent = form.getAttribute('data-sent-label') || 'Request sent ✓';
       button.disabled = true;
       window.setTimeout(function () {
         labelEl.textContent = label;
@@ -233,5 +234,5 @@
         form.reset();
       }, 3000);
     });
-  }
+  });
 })();

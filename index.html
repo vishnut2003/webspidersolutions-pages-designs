@@ -952,24 +952,70 @@
     </section>
 
     <!-- ======================================================= Team -->
-    <section class="section section--tight team" aria-labelledby="team-title">
-      <div class="container team__inner reveal">
-        <div class="team__avatars" aria-hidden="true">
-          <span class="avatar-stack">
-            <span class="avatar avatar--tint">AS</span>
-            <span class="avatar">PR</span>
-            <span class="avatar avatar--tint">NK</span>
-            <span class="avatar">RM</span>
-            <span class="avatar avatar--tint">SD</span>
-          </span>
-          <span class="team__more">+45</span>
+    <section class="section team" aria-labelledby="team-title">
+      <div class="container team__grid">
+        <div class="team__intro reveal">
+          <p class="eyebrow">The team</p>
+          <h2 class="section__title" id="team-title">The team behind <em>the numbers</em>.</h2>
+          <p class="lead section__lead">50+ AI SEO and digital marketing specialists — strategists, analysts, writers and engineers who work as one squad on your account, from our Noida studio.</p>
+          <div class="team__actions">
+            <a class="btn btn--light" href="#">
+              Meet the team
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="link-arrow" href="#">
+              <span>We're hiring</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <ul class="team__facts">
+            <li>Noida HQ</li>
+            <li>Replies within a day</li>
+            <li>English and Hindi</li>
+          </ul>
         </div>
-        <h2 id="team-title">The team behind it — 50+ AI SEO and digital marketing specialists.</h2>
-        <p>Strategists, analysts, writers and engineers who work as one squad on your account.</p>
-        <a class="link-arrow" href="#">
-          <span>Meet the team</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+
+        <ul class="team__roster reveal" style="--i: 1" aria-label="Team by discipline">
+          <li class="team__cell">
+            <span class="team__count">14</span>
+            <span class="team__role">SEO &amp; AEO strategists</span>
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar">AS</span><span class="avatar">PR</span><span class="avatar">NK</span>
+            </span>
+          </li>
+          <li class="team__cell">
+            <span class="team__count">9</span>
+            <span class="team__role">Paid media specialists</span>
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar">RM</span><span class="avatar">SD</span><span class="avatar">VK</span>
+            </span>
+          </li>
+          <li class="team__cell">
+            <span class="team__count">12</span>
+            <span class="team__role">Content &amp; creative</span>
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar">AT</span><span class="avatar">MJ</span><span class="avatar">HS</span>
+            </span>
+          </li>
+          <li class="team__cell">
+            <span class="team__count">10</span>
+            <span class="team__role">Web &amp; app engineers</span>
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar">DP</span><span class="avatar">KR</span><span class="avatar">SB</span>
+            </span>
+          </li>
+          <li class="team__cell">
+            <span class="team__count">5</span>
+            <span class="team__role">Analysts &amp; data</span>
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar">NG</span><span class="avatar">IA</span><span class="avatar">TS</span>
+            </span>
+          </li>
+          <li class="team__cell team__cell--accent">
+            <span class="team__count">1</span>
+            <span class="team__role">squad per account: a strategist, an analyst, a writer and an engineer who know your numbers.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -987,41 +1033,90 @@
           </a>
         </div>
 
-        <ul class="insights__grid">
-          <li class="card card--hover post-card reveal">
-            <a href="#">
-              <div class="post-card__thumb" style="--art: linear-gradient(135deg, rgba(146,193,49,0.28), #f2f3ef 70%)">
-                <span class="tag post-card__cat">Performance</span>
+        <div class="insights__layout">
+          <!-- Featured article -->
+          <article class="card card--hover post-feature reveal">
+            <a class="post-feature__link" href="#">
+              <div class="post-feature__cover" style="--art: linear-gradient(135deg, rgba(146, 193, 49, 0.28), rgba(242, 243, 239, 1) 75%)">
+                <div class="post-feature__cat">
+                  <span class="tag">AI search</span>
+                  <span class="post-feature__read">8 min read</span>
+                </div>
+                <!-- An answer card being cited: lines of copy, one highlighted, and a spark. -->
+                <svg class="post-feature__art" viewBox="0 0 320 220" fill="none" aria-hidden="true">
+                  <rect x="20" y="30" width="280" height="200" rx="18" class="post-feature__art-card"/>
+                  <rect x="44" y="58" width="150" height="12" rx="6" class="post-feature__art-line post-feature__art-line--strong"/>
+                  <rect x="44" y="86" width="230" height="10" rx="5" class="post-feature__art-line"/>
+                  <rect x="44" y="106" width="200" height="10" rx="5" class="post-feature__art-line"/>
+                  <rect x="44" y="126" width="216" height="10" rx="5" class="post-feature__art-line"/>
+                  <rect x="44" y="160" width="128" height="28" rx="14" class="post-feature__art-pill"/>
+                  <rect x="60" y="171" width="96" height="6" rx="3" class="post-feature__art-card"/>
+                  <path d="M266 34l4.5 11 11 4.5-11 4.5-4.5 11-4.5-11-11-4.5 11-4.5z" class="post-feature__art-spark"/>
+                </svg>
               </div>
-              <div class="post-card__body">
-                <h3 class="post-card__title">How to improve website speed</h3>
-                <p class="post-card__meta">July 2026</p>
+              <div class="post-feature__body">
+                <h3 class="post-feature__title">How to get cited by Google AI Overviews and ChatGPT</h3>
+                <p class="post-feature__excerpt">Answer engines reward pages that state the answer first, cite their sources and describe entities clearly. A practical checklist drawn from forty site audits.</p>
+                <div class="post-feature__author">
+                  <span class="avatar avatar--tint" aria-hidden="true">NK</span>
+                  <span class="post-feature__who">
+                    <span class="post-feature__name">Nikhil Kapoor</span>
+                    <span class="post-feature__meta">Head of SEO · August 2026</span>
+                  </span>
+                  <span class="link-arrow"><span>Read article</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
               </div>
             </a>
-          </li>
-          <li class="card card--hover post-card reveal" style="--i: 1">
-            <a href="#">
-              <div class="post-card__thumb" style="--art: linear-gradient(135deg, rgba(109,127,83,0.26), #f2f3ef 70%)">
-                <span class="tag post-card__cat">Strategy</span>
+          </article>
+
+          <div class="insights__side reveal" style="--i: 1">
+            <ol class="post-list">
+              <li class="post-list__item">
+                <a class="post-list__link" href="#">
+                  <span class="post-list__num" aria-hidden="true">01</span>
+                  <span class="post-list__content">
+                    <span class="post-list__meta"><span class="tag">Performance</span><span>July 2026 · 5 min read</span></span>
+                    <span class="post-list__title">How to improve website speed</span>
+                  </span>
+                  <span class="post-list__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+              <li class="post-list__item">
+                <a class="post-list__link" href="#">
+                  <span class="post-list__num" aria-hidden="true">02</span>
+                  <span class="post-list__content">
+                    <span class="post-list__meta"><span class="tag">Strategy</span><span>July 2026 · 7 min read</span></span>
+                    <span class="post-list__title">Market segmentation strategies that work</span>
+                  </span>
+                  <span class="post-list__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+              <li class="post-list__item">
+                <a class="post-list__link" href="#">
+                  <span class="post-list__num" aria-hidden="true">03</span>
+                  <span class="post-list__content">
+                    <span class="post-list__meta"><span class="tag">Research</span><span>June 2026 · 9 min read</span></span>
+                    <span class="post-list__title">Competitive analysis in marketing: a practical guide</span>
+                  </span>
+                  <span class="post-list__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+            </ol>
+
+            <!-- Presentational; the shared script intercepts the submit. -->
+            <form class="insights__note" action="#" method="post" novalidate data-sent-label="Subscribed ✓">
+              <div>
+                <p class="insights__note-title">The monthly growth note</p>
+                <p class="insights__note-text">One email a month on what changed in search, ads and AI, and what to do about it.</p>
               </div>
-              <div class="post-card__body">
-                <h3 class="post-card__title">Market segmentation strategies that work</h3>
-                <p class="post-card__meta">July 2026</p>
+              <div class="insights__note-form">
+                <label class="visually-hidden" for="note-email">Work email</label>
+                <input class="field__input" id="note-email" name="email" type="email" autocomplete="email" placeholder="you@company.com">
+                <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
               </div>
-            </a>
-          </li>
-          <li class="card card--hover post-card reveal" style="--i: 2">
-            <a href="#">
-              <div class="post-card__thumb" style="--art: linear-gradient(135deg, rgba(127,160,66,0.28), #f2f3ef 70%)">
-                <span class="tag post-card__cat">Research</span>
-              </div>
-              <div class="post-card__body">
-                <h3 class="post-card__title">Competitive analysis in marketing: a practical guide</h3>
-                <p class="post-card__meta">July 2026</p>
-              </div>
-            </a>
-          </li>
-        </ul>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 

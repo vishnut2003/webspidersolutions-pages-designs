@@ -75,6 +75,32 @@
   outline-color: var(--color-accent);
 }
 
+/* Light: Bone pill for use on Ink; sweeps to green with Ink text on
+   hover, like the primary does. */
+.btn--light {
+  background: var(--color-on-dark);
+  color: var(--color-ink);
+}
+
+.btn--light svg {
+  color: var(--color-accent-2);
+}
+
+.btn--light:hover {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-2px);
+}
+
+.btn--light:hover svg {
+  color: var(--color-ink);
+}
+
+.btn--light:focus-visible {
+  outline-color: var(--color-on-dark);
+}
+
 /* Ghost: hairline pill on the page background. */
 .btn--ghost {
   background: transparent;
