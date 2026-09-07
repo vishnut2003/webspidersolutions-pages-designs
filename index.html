@@ -541,20 +541,159 @@
         <div class="reveal">
           <p class="eyebrow"><span class="eyebrow__num">03</span>About Web Spider</p>
           <h2 class="section__title" id="about-title">We combine data, creativity and AI to drive growth.</h2>
-          <div class="layers" aria-hidden="true">
-            <div class="layer layer--1">Data</div>
-            <div class="layer layer--2">Creativity</div>
-            <div class="layer layer--3">AI</div>
+
+          <!-- The headline as an equation: three inputs, one result. Decorative;
+               every word in it is already in the heading above. -->
+          <div class="formula" aria-hidden="true">
+            <div class="formula__tile formula__tile--data">
+              <div class="formula__head">
+                <span class="icon-circle formula__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20v-6"/><path d="M11 20V9"/><path d="M16 20v-10"/><path d="M21 20V4"/></svg>
+                </span>
+                <span class="formula__label">Data</span>
+                <span class="formula__index">01</span>
+              </div>
+              <div class="formula__body">
+                <div class="formula__readout">
+                  <span class="formula__value">+142%</span>
+                  <span class="formula__caption">organic sessions</span>
+                </div>
+                <div class="formula__bars">
+                  <span style="--h: 0.3; --i: 0"></span>
+                  <span style="--h: 0.45; --i: 1"></span>
+                  <span style="--h: 0.38; --i: 2"></span>
+                  <span style="--h: 0.6; --i: 3"></span>
+                  <span style="--h: 0.7; --i: 4"></span>
+                  <span style="--h: 0.82; --i: 5"></span>
+                  <span style="--h: 1; --i: 6"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula__tile formula__tile--creative">
+              <div class="formula__head">
+                <span class="icon-circle formula__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.9 2-2 0-.6-.2-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2H16a5 5 0 0 0 5-5c0-3.5-4-6.3-9-6.3z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>
+                </span>
+                <span class="formula__label">Creativity</span>
+                <span class="formula__index">02</span>
+              </div>
+              <div class="formula__body">
+                <div class="formula__shapes">
+                  <span class="formula__shape formula__shape--circle"></span>
+                  <span class="formula__shape formula__shape--square"></span>
+                  <span class="formula__shape formula__shape--triangle"></span>
+                </div>
+                <span class="formula__caption">Brand, content and design</span>
+              </div>
+            </div>
+
+            <div class="formula__tile formula__tile--ai">
+              <div class="formula__head">
+                <span class="icon-circle formula__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M12 19v2"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m5.6 5.6 1.4 1.4"/><path d="m17 17 1.4 1.4"/><path d="m5.6 18.4 1.4-1.4"/><path d="m17 7 1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+                </span>
+                <span class="formula__label">AI</span>
+                <span class="formula__index">03</span>
+              </div>
+              <div class="formula__body">
+                <svg class="formula__net" viewBox="0 0 200 84" fill="none">
+                  <g class="formula__links" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 64 62 20M62 20 108 50M108 50 152 14M108 50 182 66M18 64 108 50M62 20 152 14M152 14 182 66M108 50 96 78M18 64 96 78"/>
+                  </g>
+                  <circle cx="108" cy="50" r="18" class="formula__glow"/>
+                  <circle cx="18" cy="64" r="5" class="formula__node"/>
+                  <circle cx="62" cy="20" r="5" class="formula__node"/>
+                  <circle cx="152" cy="14" r="5" class="formula__node"/>
+                  <circle cx="182" cy="66" r="5" class="formula__node"/>
+                  <circle cx="96" cy="78" r="4" class="formula__node"/>
+                  <circle cx="108" cy="50" r="8" class="formula__node formula__node--hub"/>
+                  <circle cx="108" cy="50" r="8" class="formula__pulse"/>
+                </svg>
+                <span class="formula__caption">Forecasting, clustering, automation</span>
+              </div>
+            </div>
+
+            <div class="formula__tile formula__tile--growth">
+              <svg class="formula__line" viewBox="0 0 200 90" preserveAspectRatio="none" fill="none">
+                <path d="M0 80C30 76 44 70 66 58S100 40 122 34s36-8 64-20V90H0z" fill="url(#growth-fill)"/>
+                <path d="M0 80C30 76 44 70 66 58S100 40 122 34s36-8 64-20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="growth-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="currentColor" stop-opacity="0.35"/>
+                    <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span class="formula__marker"></span>
+              <div class="formula__head">
+                <span class="formula__pill">4–6× ROAS</span>
+                <span class="formula__index">04</span>
+              </div>
+              <div>
+                <span class="formula__eq">Data + Creativity + AI</span>
+                <span class="formula__result">= Growth</span>
+              </div>
+            </div>
+
+            <span class="formula__plus">+</span>
           </div>
         </div>
-        <div class="reveal" style="--i: 1">
+        <div class="about__copy reveal" style="--i: 1">
           <p class="about__text lead">AI-based SEO, outsourced SEO delivery and progressive digital marketing, combined to increase leads, conversions and revenue.</p>
           <p class="about__text">Industry experience, data-driven accuracy and a results-first mindset turn marketing spend into measurable business growth — for the client, not the dashboard.</p>
-          <ul class="check-list about__points">
-            <li>Clients scaled to ₹350+ crore in revenue</li>
-            <li>100% client retention over the last three years</li>
-            <li>50+ SEO, paid media and content specialists in-house</li>
+          <ul class="about__features">
+            <li>
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5"/></svg>
+              </span>
+              <div>
+                <strong>White-label SEO delivery</strong>
+                <span>Agencies resell our work under their own brand.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 10h4v4h-4z"/></svg>
+              </span>
+              <div>
+                <strong>AI-assisted, human-led</strong>
+                <span>Models do the research; strategists make the calls.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="m9 15 2 2 4-4"/></svg>
+              </span>
+              <div>
+                <strong>Weekly reporting</strong>
+                <span>Rankings, spend and revenue in one plain-English update.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              </span>
+              <div>
+                <strong>Dedicated growth manager</strong>
+                <span>One accountable contact from kickoff to scale.</span>
+              </div>
+            </li>
           </ul>
+          <dl class="about__proof">
+            <div class="about__proof-item">
+              <dt>Client revenue scaled across active accounts</dt>
+              <dd data-count="350" data-prefix="₹" data-suffix="Cr+">₹350Cr+</dd>
+            </div>
+            <div class="about__proof-item">
+              <dt>Client retention, last three years</dt>
+              <dd data-count="100" data-suffix="%">100%</dd>
+            </div>
+            <div class="about__proof-item">
+              <dt>SEO, paid and content specialists in-house</dt>
+              <dd data-count="50" data-suffix="+">50+</dd>
+            </div>
+          </dl>
           <a class="link-arrow" href="#">
             <span>More about our unique approach</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>

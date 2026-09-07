@@ -1019,69 +1019,446 @@
   margin-top: var(--space-4);
 }
 
-.about__points {
-  margin-top: var(--space-6);
-}
-
 .about .link-arrow {
   margin-top: var(--space-6);
 }
 
-.layers {
+/* How-we-work grid: four icon rows, two per line from tablet up. */
+.about__features {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.about__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.about__features .icon-circle {
+  flex-shrink: 0;
+}
+
+.about__features strong {
+  display: block;
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.about__features span:not(.icon-circle) {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-slate);
+}
+
+/* Proof strip: three figures with a hairline between, value under label
+   in the markup (valid dl order) but shown value-first. */
+.about__proof {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+/* column-reverse packs to the bottom by default, which would let the
+   figures float at different heights; flex-end pins them to the top. */
+.about__proof-item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.about__proof dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Two lines reserved for every label, so the three cells stay the same
+   height even when one label fits on a single line. */
+.about__proof dt {
+  min-height: 2.8em;
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-slate);
+}
+
+/* --- The formula: Data + Creativity + AI = Growth ----------------------- */
+
+.formula {
   position: relative;
-  height: 300px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--space-3);
   margin-top: var(--space-7);
 }
 
-.layer {
+.formula__tile {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 190px;
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.formula__tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.formula__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.formula__icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.formula__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.formula__label {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-ink);
+}
+
+/* Index numeral in the far corner of every head, as on the other cards. */
+.formula__index {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-slate-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.formula__body {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.formula__caption {
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-slate);
+}
+
+/* Dotted ground on the Bone tiles, fading in towards the bottom-right so
+   it reads as texture behind the illustration, not a grid over it. */
+.formula__tile--creative::before,
+.formula__tile--ai::before {
+  content: "";
   position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(var(--color-line-strong) 1px, transparent 1px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 100%, rgba(0, 0, 0, 0.9), transparent 75%);
+  mask-image: radial-gradient(ellipse at 100% 100%, rgba(0, 0, 0, 0.9), transparent 75%);
+}
+
+/* Data: a readout over a bar chart on ruled paper; the bars grow in once
+   the section reveals. */
+.formula__tile--data {
+  background: var(--color-surface);
+}
+
+.formula__readout {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.formula__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.formula__bars {
   display: flex;
   align-items: flex-end;
-  width: 62%;
-  height: 200px;
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-line);
-  box-shadow: var(--shadow-md);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-ink);
+  gap: 5px;
+  height: 64px;
+  border-bottom: 1px solid var(--color-line-strong);
+  background-image: repeating-linear-gradient(to top, var(--color-line) 0 1px, transparent 1px 16px);
+}
+
+.formula__bars span {
+  flex: 1;
+  height: calc(var(--h) * 100%);
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(to top, var(--color-accent-2), var(--color-accent));
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-slow) var(--ease-out) calc(var(--i, 0) * 70ms + 250ms);
+}
+
+.formula__bars span:last-child {
+  background: var(--color-accent);
+}
+
+.is-visible .formula__bars span,
+.no-js .formula__bars span {
+  transform: none;
+}
+
+/* Creativity: circle, square and triangle in the three brand tones,
+   overlapping; multiply deepens the joins. */
+.formula__shapes {
+  position: relative;
+  height: 64px;
+}
+
+.formula__shape {
+  position: absolute;
+  bottom: 0;
+  width: 58px;
+  height: 58px;
+  mix-blend-mode: multiply;
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
-.layer--1 {
+.formula__shape--circle {
   left: 0;
-  top: 60px;
-  background: var(--color-bg);
-  transform: rotate(-4deg);
-  z-index: 1;
+  border-radius: 50%;
+  background: var(--color-accent);
 }
 
-.layer--2 {
-  left: 19%;
-  top: 30px;
-  background: linear-gradient(135deg, var(--color-surface), var(--color-accent-tint));
-  transform: rotate(2deg);
+.formula__shape--square {
+  left: 40px;
+  bottom: 6px;
+  border-radius: 12px;
+  background: var(--color-accent-2);
+  transform: rotate(12deg);
+}
+
+.formula__shape--triangle {
+  left: 82px;
+  background: var(--color-accent-3);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.formula__tile--creative:hover .formula__shape--circle { transform: translateX(-6px); }
+.formula__tile--creative:hover .formula__shape--square { transform: rotate(0deg) translateY(-6px); }
+.formula__tile--creative:hover .formula__shape--triangle { transform: translateX(6px); }
+
+/* AI: a node graph with a glowing, pulsing hub. */
+.formula__net {
+  width: 100%;
+  height: 76px;
+  color: var(--color-accent-2);
+}
+
+.formula__links {
+  opacity: 0.45;
+}
+
+.formula__glow {
+  fill: var(--color-accent);
+  opacity: 0.18;
+}
+
+.formula__node {
+  fill: var(--color-accent-2);
+  stroke: var(--color-bg);
+  stroke-width: 2;
+}
+
+.formula__node--hub {
+  fill: var(--color-accent);
+}
+
+.formula__pulse {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  transform-origin: 108px 50px;
+  animation: formula-pulse 2.4s var(--ease-out) infinite;
+}
+
+@keyframes formula-pulse {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Growth: the result, on Ink, with chart rules and a rising line behind
+   the type and a marker at the line's end. */
+.formula__tile--growth {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+.formula__tile--growth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: repeating-linear-gradient(to top, var(--color-line-on-dark) 0 1px, transparent 1px 28px);
+}
+
+.formula__line {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: -1;
+  width: 100%;
+  height: 62%;
+  color: var(--color-accent);
+}
+
+/* Sits where the line ends: 93% across, 62% × (1 − 14/90) up from the floor. */
+.formula__marker {
+  position: absolute;
+  right: 7%;
+  bottom: calc(62% * 0.845);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-ink), 0 0 0 5px var(--color-accent-glow);
+  transform: translate(50%, 50%);
+}
+
+.formula__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--color-line-on-dark);
+  border-radius: var(--radius-pill);
+  background: var(--color-line-on-dark);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-on-dark);
+}
+
+.formula__tile--growth .formula__index {
+  color: var(--color-on-dark-muted);
+}
+
+.formula__eq {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.02em;
+  color: var(--color-on-dark-muted);
+}
+
+.formula__result {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-heading);
+}
+
+/* Operator badge at the centre where all four tiles meet. */
+.formula__plus {
+  position: absolute;
   z-index: 2;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-ink);
 }
 
-.layer--3 {
-  left: 38%;
-  top: 0;
-  background: linear-gradient(135deg, var(--color-accent-tint), var(--color-accent-tint-strong));
-  transform: rotate(6deg);
-  z-index: 3;
-}
+@media (min-width: 640px) {
+  .about__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-6);
+  }
 
-.layers:hover .layer--1 { transform: rotate(-7deg) translateY(6px); }
-.layers:hover .layer--2 { transform: rotate(0deg) translateY(-4px); }
-.layers:hover .layer--3 { transform: rotate(9deg) translateY(-10px); }
+  .about__proof {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .about__proof-item + .about__proof-item {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--color-line);
+  }
+}
 
 @media (min-width: 1024px) {
+  /* Top-aligned: the copy starts level with the eyebrow rather than
+     floating mid-way down the taller formula column. */
   .about__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-9);
-    align-items: center;
+    align-items: start;
+  }
+
+  /* The copy column stretches to the tile grid's height and spreads its
+     blocks evenly, so it always ends level with the bottom tiles. */
+  .about__copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .formula {
+    gap: var(--space-4);
+  }
+
+  .formula__tile {
+    min-height: 210px;
+    padding: var(--space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formula__bars span {
+    transform: none;
+    transition: none;
+  }
+
+  .formula__pulse {
+    animation: none;
+    opacity: 0;
   }
 }
 
