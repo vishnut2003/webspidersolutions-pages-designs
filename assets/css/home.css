@@ -774,73 +774,233 @@
 
 /* --- Approach --------------------------------------------------------------------- */
 
+/* Intro sits in the section head; below it the photo and the four step
+   cards share one grid row, so the photo is exactly as tall as the cards
+   and never leaves a gap beneath itself. */
 .approach__grid {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-6);
 }
 
-.approach__visual img {
-  width: 100%;
-  height: auto;
+/* Photo sits on a green-tinted plate offset down-right, with a badge
+   breaking its bottom edge, so it reads as a composed object rather than
+   a bare rectangle. The badge overhang is what the bottom margin holds. */
+.approach__visual {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1;
+  margin-bottom: var(--space-4);
+}
+
+.approach__visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translate(14px, 14px);
   border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-accent-tint-strong), var(--color-accent-tint));
+}
+
+/* The photo is taken out of flow so it never sets the frame's height:
+   stacked, the frame is square; beside the cards it stretches to their
+   height and cover trims the square photo's edges (the subjects are
+   centred, so nothing important is lost). */
+.approach__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.approach__badge {
+  position: absolute;
+  left: var(--space-5);
+  bottom: calc(-1 * var(--space-4));
   box-shadow: var(--shadow-md);
+  white-space: nowrap;
 }
 
-.approach__intro {
-  margin-bottom: var(--space-6);
-}
-
-.approach__intro p {
-  margin-top: var(--space-4);
-}
-
-.approach__intro .link-arrow {
+/* The four-beat loop the lead describes, as a chip row. Green dot on each
+   chip comes from .badge; the last chip carries a repeat icon. */
+.approach__loop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   margin-top: var(--space-5);
 }
 
-.step {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: var(--space-4);
-  padding-block: var(--space-6);
-  border-top: 1px solid var(--color-line);
+.approach__loop li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-ink);
 }
 
-.step:last-child {
-  border-bottom: 1px solid var(--color-line);
+.approach__loop li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.approach__loop svg {
+  width: 1em;
+  height: 1em;
+  color: var(--color-accent-3);
+}
+
+/* --- Steps: icon-led cards, same anatomy as the service cards ---------- */
+
+.approach__list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+}
+
+.step:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.step__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.step__icon {
+  width: 48px;
+  height: 48px;
+  transition:
+    background-color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.step__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.step:hover .step__icon {
+  background: var(--color-accent);
+  transform: scale(1.06);
 }
 
 .step__num {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
-  font-weight: 300;
-  line-height: 0.9;
+  font-size: 1.125rem;
   color: var(--color-slate-soft);
   font-variant-numeric: tabular-nums;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.step:hover .step__num {
+  color: var(--color-slate);
+}
+
+.step__title {
+  margin-top: var(--space-4);
+  font-size: 1.1875rem;
 }
 
 .step__text {
   margin-top: var(--space-2);
+  font-size: var(--text-small);
+  line-height: 1.55;
   color: var(--color-slate);
-  max-width: 46ch;
+}
+
+/* auto pushes the tags to the card floor so they line up across a row. */
+.step__tags {
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .approach__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {
   .approach__grid {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: var(--space-9);
-    align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-7);
   }
 
-  /* The image holds while the intro and four steps scroll past it. */
+  /* The badge may overhang into the section's own padding here; no
+     reserved margin, so the photo's floor lines up with the cards'. */
   .approach__visual {
-    position: sticky;
-    top: calc(var(--header-h) + 2rem);
+    aspect-ratio: auto;
+    margin-bottom: 0;
+  }
+}
+
+/* Laptop range: each card is only ~280px wide, so the chip row would
+   wrap to two lines and the pair of rows would outgrow a 720px-tall
+   viewport, dragging the photo into a tall crop with it. Compact the
+   card and run the disciplines as one dotted line instead of chips. */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .step {
+    padding: var(--space-4);
   }
 
-  .step {
-    grid-template-columns: 6rem 1fr;
-    gap: var(--space-6);
+  .step__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .step__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .step__title {
+    margin-top: var(--space-3);
+    font-size: 1.0625rem;
+  }
+
+  .step__text {
+    font-size: var(--text-xs);
+  }
+
+  .step__tags {
+    display: block;
+    padding-top: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-slate);
+  }
+
+  .step__tags .tag {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: inherit;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  .step__tags .tag + .tag::before {
+    content: "·";
+    margin: 0 0.45em;
+    color: var(--color-slate-soft);
   }
 }
 
