@@ -112,9 +112,11 @@
   color: var(--color-accent-2);
 }
 
+/* Lifts into a clean white pill: the border goes white with the fill, so
+   the shadow alone gives it its edge. */
 .btn--ghost:hover {
   background: var(--color-surface);
-  border-color: var(--color-ink);
+  border-color: var(--color-surface);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
