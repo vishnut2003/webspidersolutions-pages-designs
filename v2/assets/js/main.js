@@ -235,4 +235,56 @@
       }, 3000);
     });
   });
+
+  /* --- Floating WhatsApp: the card is the only scripted part ---------------- */
+  /* Without this script the button stays a plain wa.me link and the card never
+     opens; with it, the button becomes the card's toggle. */
+  var wa = doc.getElementById('whatsapp');
+  var waCard = wa && wa.querySelector('.wa__card');
+  var waBtn = wa && wa.querySelector('.wa__btn');
+  if (wa && waCard && waBtn) {
+    var WA_KEY = 'wss-wa-invited';
+    var waInvited = false;
+    try { waInvited = window.sessionStorage.getItem(WA_KEY) === '1'; } catch (error) {}
+
+    var closeWa = function () {
+      wa.classList.remove('is-open');
+      waBtn.setAttribute('aria-expanded', 'false');
+      window.setTimeout(function () {
+        if (!wa.classList.contains('is-open')) waCard.hidden = true;
+      }, 320);
+    };
+
+    var openWa = function () {
+      waCard.hidden = false;
+      wa.classList.add('is-seen');
+      waBtn.setAttribute('aria-expanded', 'true');
+      // Two frames, so the card transitions in from its hidden state.
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () { wa.classList.add('is-open'); });
+      });
+    };
+
+    waBtn.setAttribute('aria-expanded', 'false');
+    waBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (wa.classList.contains('is-open')) closeWa();
+      else openWa();
+    });
+
+    Array.prototype.forEach.call(wa.querySelectorAll('[data-wa-close]'), function (el) {
+      el.addEventListener('click', function () {
+        closeWa();
+        // Only an explicit dismissal stops the invitation coming back on its own.
+        try { window.sessionStorage.setItem(WA_KEY, '1'); } catch (error) {}
+      });
+    });
+
+    doc.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && wa.classList.contains('is-open')) closeWa();
+    });
+
+    if (waInvited) wa.classList.add('is-seen');
+    else window.setTimeout(openWa, reduceMotion ? 1500 : 4500);
+  }
 })();

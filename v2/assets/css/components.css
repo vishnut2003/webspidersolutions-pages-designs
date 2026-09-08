@@ -1551,3 +1551,328 @@ select.field__input {
     grid-column: auto;
   }
 }
+
+/* --- Floating WhatsApp widget ---------------------------------------------------- */
+
+/* Sits under the mobile nav overlay, so an open menu covers it. The button is a
+   plain link: with JavaScript off the card never appears and the button still works. */
+.wa {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: var(--z-float);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.9rem;
+}
+
+.wa__btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--wa-green) 0%, var(--wa-green-deep) 100%);
+  color: #fff;
+  box-shadow:
+    0 10px 24px -8px rgba(18, 140, 126, 0.65),
+    0 2px 6px rgba(47, 50, 55, 0.18);
+  animation: wa-drop 560ms var(--ease-out) 700ms backwards;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+@keyframes wa-drop {
+  from {
+    opacity: 0;
+    transform: scale(0.4) translateY(14px);
+  }
+}
+
+.wa__btn:hover,
+.wa__btn:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 16px 32px -10px rgba(18, 140, 126, 0.75),
+    0 3px 8px rgba(47, 50, 55, 0.2);
+}
+
+.wa__glyph {
+  width: 31px;
+  height: 31px;
+  fill: currentColor;
+}
+
+/* Two rings breathing outward, a beat apart. Reduced motion lands them on the
+   last keyframe, where they are already invisible. */
+.wa__ripple,
+.wa__ripple::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--wa-green);
+  animation: wa-ripple 3s var(--ease-out) infinite;
+}
+
+.wa__ripple::after {
+  content: "";
+  animation-delay: 1.5s;
+}
+
+@keyframes wa-ripple {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* Unread count: Ink, so it reads on the green fill and on any page section. */
+.wa__badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 0.35rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-bg);
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wa.is-seen .wa__badge {
+  display: none;
+}
+
+/* Label pill to the left of the button — Ink on Bone rather than white on green,
+   which would not clear AA. */
+.wa__tip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.75rem);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-small);
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0.4rem, -50%);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.wa__tip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border: 5px solid transparent;
+  border-left-color: var(--color-ink);
+}
+
+.wa__btn:hover .wa__tip,
+.wa__btn:focus-visible .wa__tip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.wa.is-open .wa__tip {
+  opacity: 0;
+}
+
+/* --- The invitation card --- */
+
+.wa__card {
+  width: min(322px, calc(100vw - 2rem));
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform-origin: 100% 100%;
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.wa.is-open .wa__card {
+  opacity: 1;
+  transform: none;
+}
+
+/* Same Ink-with-a-green-glow head as the mega menu's promo rail. */
+.wa__card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 0.9rem;
+  background:
+    radial-gradient(130% 150% at 100% 0%, rgba(37, 211, 102, 0.36), transparent 62%),
+    var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+/* icon.svg is the brand's profile mark — an avatar is exactly what it is for. */
+.wa__avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-surface);
+}
+
+.wa__avatar img {
+  width: 22px;
+  height: 22px;
+}
+
+.wa__presence {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--wa-green);
+  border: 2px solid var(--color-ink);
+}
+
+.wa__who {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.wa__who b {
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.wa__status {
+  font-size: 0.6875rem;
+  color: var(--color-on-dark-muted);
+}
+
+.wa__close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  border-radius: 50%;
+  color: var(--color-on-dark-muted);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.wa__close:hover {
+  background: rgba(242, 243, 239, 0.14);
+  color: var(--color-on-dark);
+}
+
+.wa__close svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Bone dotted ground, echoing the hero, standing in for a chat wallpaper. */
+.wa__card-body {
+  padding: 1rem 0.9rem 1.1rem;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(90, 94, 100, 0.16) 1px, transparent 0) 0 0 / 14px 14px,
+    var(--color-bg);
+}
+
+.wa__bubble {
+  padding: 0.7rem 0.85rem;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  color: var(--color-ink);
+}
+
+.wa__time {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.625rem;
+  color: var(--color-slate);
+  text-align: right;
+}
+
+.wa__card-foot {
+  padding: 0.8rem 0.9rem 0.9rem;
+  border-top: 1px solid var(--color-line);
+}
+
+/* Ink on green, the same pairing the primary button lands on when it sweeps. */
+.wa__start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--wa-green);
+  color: var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: 600;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.wa__start svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.wa__start:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -10px rgba(18, 140, 126, 0.9);
+}
+
+@media (max-width: 767px) {
+  .wa__btn {
+    width: 54px;
+    height: 54px;
+  }
+
+  .wa__glyph {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* No hover on touch, and the pill would crowd the screen edge. */
+  .wa__tip {
+    display: none;
+  }
+}

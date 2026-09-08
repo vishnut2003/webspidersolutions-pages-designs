@@ -97,7 +97,12 @@
   --dur: 320ms;
   --dur-slow: 640ms;
 
+  /* --- WhatsApp widget: the service's own brand pair, used only there ----- */
+  --wa-green: #25d366;
+  --wa-green-deep: #128c7e;
+
   /* --- Layers ----------------------------------------------------------- */
+  --z-float: 90;
   --z-header: 100;
   --z-dropdown: 110;
   --z-overlay: 200;
